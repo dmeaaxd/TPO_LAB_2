@@ -11,9 +11,11 @@ public class TrigonometricFunctions {
     public double sin(double x) {
         double result = 0;
         double term = x;
+        double lastTerm = term + 10 * precision;
         int n = 1;
-        while (Math.abs(term) > precision) {
+        while (Math.abs(term - lastTerm) > precision) {
             result += term;
+            lastTerm = term;
             term *= - (x * x) / ((2 * n) * (2 * n + 1));
             n++;
         }
@@ -23,8 +25,10 @@ public class TrigonometricFunctions {
     public double cos(double x) {
         double result = 1;
         double term = 1;
+        double lastTerm = term + 10 * precision;
         int n = 1;
-        while (Math.abs(term) > precision) {
+        while (Math.abs(term - lastTerm) > precision) {
+            lastTerm = term;
             term *= - (x * x) / ((2 * n - 1) * (2 * n));
             result += term;
             n++;

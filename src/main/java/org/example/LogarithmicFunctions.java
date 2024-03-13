@@ -14,9 +14,11 @@ public class LogarithmicFunctions {
         double result = 0;
         double term = (x - 1) / (x + 1);
         double currentTerm = term;
+        double lastTerm = term + 10 * precision;
         int n = 1;
-        while (Math.abs(currentTerm) > precision) {
+        while (Math.abs(currentTerm - lastTerm) > precision) {
             result += currentTerm;
+            lastTerm = currentTerm;
             currentTerm *= term * term * (2 * n - 1) / (2 * n + 1);
             n++;
         }
