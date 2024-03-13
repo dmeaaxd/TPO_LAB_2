@@ -1,7 +1,7 @@
 package org.example;
 
 public class LogarithmicFunctions {
-    private double precision;
+    private final double precision;
 
     public LogarithmicFunctions(double precision) {
         this.precision = precision;
@@ -22,14 +22,18 @@ public class LogarithmicFunctions {
             currentTerm *= term * term * (2 * n - 1) / (2 * n + 1);
             n++;
         }
-        return 2 * result;
+        result *= 2;
+        CsvWriter.writeToCsv("ln", x, result);
+        return result;
     }
 
     public double log(double base, double x) {
         if (base <= 0 || x <= 0) {
             return Double.NaN;
         }
-        return ln(x) / ln(base);
+        double result = ln(x) / ln(base);
+        CsvWriter.writeToCsv("log"+(int)base, x, result);
+        return result;
     }
 
 }
