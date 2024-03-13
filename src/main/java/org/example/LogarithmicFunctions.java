@@ -12,14 +12,15 @@ public class LogarithmicFunctions {
             return Double.NaN;
         }
         double result = 0;
-        double term = x - 1; // Начальный член ряда
-        double divisor = 1;
-        while (Math.abs(term) > precision) {
-            result += term / divisor;
-            term *= -(x - 1); // Следующий член ряда
-            divisor++;
+        double term = (x - 1) / (x + 1);
+        double currentTerm = term;
+        int n = 1;
+        while (Math.abs(currentTerm) > precision) {
+            result += currentTerm;
+            currentTerm *= term * term * (2 * n - 1) / (2 * n + 1);
+            n++;
         }
-        return result;
+        return 2 * result;
     }
 
     public double log(double base, double x) {
@@ -28,4 +29,5 @@ public class LogarithmicFunctions {
         }
         return ln(x) / ln(base);
     }
+
 }
