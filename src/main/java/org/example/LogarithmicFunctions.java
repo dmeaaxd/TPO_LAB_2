@@ -23,7 +23,7 @@ public class LogarithmicFunctions {
             n++;
         }
         result *= 2;
-        CsvWriter.writeToCsv("ln", x, result);
+        CsvHandler.writeToCsv("ln", x, result);
         return result;
     }
 
@@ -32,7 +32,7 @@ public class LogarithmicFunctions {
             return Double.NaN;
         }
         double result = ln(x) / ln(base);
-        CsvWriter.writeToCsv("log"+(int)base, x, result);
+        CsvHandler.writeToCsv("log"+(int)base, x, result);
         return result;
     }
 

@@ -19,7 +19,7 @@ public class TrigonometricFunctions {
             term *= -(x * x) / ((2 * n) * (2 * n + 1));
             n++;
         }
-        CsvWriter.writeToCsv("sin", x, result);
+        CsvHandler.writeToCsv("sin", x, result);
         return result;
     }
 
@@ -34,19 +34,19 @@ public class TrigonometricFunctions {
             result += term;
             n++;
         }
-        CsvWriter.writeToCsv("cos", x, result);
+        CsvHandler.writeToCsv("cos", x, result);
         return result;
     }
 
     public double tan(double x) {
         double result = sin(x) / cos(x);
-        CsvWriter.writeToCsv("tan", x, result);
+        CsvHandler.writeToCsv("tan", x, result);
         return result;
     }
 
     public double cot(double x) {
         double result = 1 / tan(x);
-        CsvWriter.writeToCsv("cot", x, result);
+        CsvHandler.writeToCsv("cot", x, result);
         return result;
     }
 }
