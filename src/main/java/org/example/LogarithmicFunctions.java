@@ -11,13 +11,13 @@ public class LogarithmicFunctions {
         if (x <= 0) {
             return Double.NaN;
         }
-        double result = x - 1;
-        double term = x - 1;
-        int n = 2;
+        double result = 0;
+        double term = x - 1; // Начальный член ряда
+        double divisor = 1;
         while (Math.abs(term) > precision) {
-            term = Math.pow(x - 1, n) / n;
-            result += term;
-            n++;
+            result += term / divisor;
+            term *= -(x - 1); // Следующий член ряда
+            divisor++;
         }
         return result;
     }
