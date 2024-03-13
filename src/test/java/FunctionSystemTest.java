@@ -1,8 +1,8 @@
-import static org.junit.Assert.*;
-
 import org.example.FunctionSystem;
-import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class FunctionSystemTest {
     private static final double DELTA = 1e-10;

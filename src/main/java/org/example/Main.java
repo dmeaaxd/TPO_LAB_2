@@ -5,5 +5,4 @@ public class Main {
         FunctionSystem functionSystem = new FunctionSystem();
         System.out.println(functionSystem.calculate((Double) null, 0.001));
     }
-
 }
