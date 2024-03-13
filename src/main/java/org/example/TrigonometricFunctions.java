@@ -2,7 +2,13 @@ package org.example;
 
 public class TrigonometricFunctions {
 
-    public static double sin(double x, double precision) {
+    private double precision;
+
+    public TrigonometricFunctions(double precision) {
+        this.precision = precision;
+    }
+
+    public double sin(double x) {
         double result = 0;
         double term = x;
         int n = 1;
@@ -14,7 +20,7 @@ public class TrigonometricFunctions {
         return result;
     }
 
-    public static double cos(double x, double precision) {
+    public double cos(double x) {
         double result = 1;
         double term = 1;
         int n = 1;
@@ -26,15 +32,15 @@ public class TrigonometricFunctions {
         return result;
     }
 
-    public static double tan(double x, double precision) {
-        return sin(x, precision) / cos(x, precision);
+    public double tan(double x) {
+        return sin(x) / cos(x);
     }
 
-    public static double cot(double x, double precision) {
-        return 1 / tan(x, precision);
+    public double cot(double x) {
+        return 1 / tan(x);
     }
 
-    public static double ln(double x, double precision) {
+    public double ln(double x) {
         if (x <= 0) {
             return Double.NaN;
         }
@@ -49,10 +55,10 @@ public class TrigonometricFunctions {
         return result;
     }
 
-    public static double log(double base, double x, double precision) {
+    public double log(double base, double x) {
         if (base <= 0 || x <= 0) {
             return Double.NaN;
         }
-        return ln(x, precision) / ln(base, precision);
+        return ln(x) / ln(base);
     }
 }
