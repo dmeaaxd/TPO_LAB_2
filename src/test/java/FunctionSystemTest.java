@@ -7,6 +7,14 @@ import static org.junit.Assert.assertThrows;
 public class FunctionSystemTest {
     private static final double DELTA = 1e-10;
 
+
+    @ParameterizedTest
+    @ValueSource(x = {0, -2, 5}, res = {Double.POSITIVE_INFINITY, 0.04386948558589, 0.4372432828671755})
+    public void testFunctionSystem(double x, double res) {
+        FunctionSystem functionSystem = new FunctionSystem();
+        assertEquals(res, functionSystem.calculate(x, DELTA), DELTA);
+    }
+
     @Test
     public void testFunctionSystem_zero() {
         FunctionSystem functionSystem = new FunctionSystem();
