@@ -1,5 +1,7 @@
 import org.example.FunctionSystem;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -9,28 +11,14 @@ public class FunctionSystemTest {
 
 
     @ParameterizedTest
-    @ValueSource(x = {0, -2, 5}, res = {Double.POSITIVE_INFINITY, 0.04386948558589, 0.4372432828671755})
+    @CsvSource({
+            "0, Infinity",
+            "-2, 0.04386948558589",
+            "5, 0.4372432828671755"
+    })
     public void testFunctionSystem(double x, double res) {
         FunctionSystem functionSystem = new FunctionSystem();
         assertEquals(res, functionSystem.calculate(x, DELTA), DELTA);
-    }
-
-    @Test
-    public void testFunctionSystem_zero() {
-        FunctionSystem functionSystem = new FunctionSystem();
-        assertEquals(Double.POSITIVE_INFINITY, functionSystem.calculate(0, DELTA), DELTA);
-    }
-
-    @Test
-    public void testFunctionSystem_lessThanZero() {
-        FunctionSystem functionSystem = new FunctionSystem();
-        assertEquals(0.04386948558589, functionSystem.calculate(-2, DELTA), DELTA);
-    }
-
-    @Test
-    public void testFunctionSystem_moreThanZero() {
-        FunctionSystem functionSystem = new FunctionSystem();
-        assertEquals(0.4372432828671755, functionSystem.calculate(5, DELTA), DELTA);
     }
 
     @Test
